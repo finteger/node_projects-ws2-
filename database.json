@@ -17,6 +17,12 @@
       "first_name": "Chen",
       "username": "Chen546",
       "email": "Chen@example.com"
+    },
+    {
+      "id": 4,
+      "first_name": "Todd",
+      "username": "finteger",
+      "email": "Todd@example.com"
     }
   ]
 }
