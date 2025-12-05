@@ -23,6 +23,12 @@
       "first_name": "Todd",
       "username": "finteger",
       "email": "Todd@example.com"
+    },
+    {
+      "id": 5,
+      "first_name": "Todd",
+      "username": "finteger",
+      "email": "todd@example.com"
     }
   ]
 }
