@@ -11,6 +11,9 @@ const rateLimit = require('express-rate-limit');
 const YAML = require('yamljs');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = YAML.load('./swagger.yaml');
+const apicache = require('apicache');
+let cache = apicache.middleware;
+
 
 //set view engine
 app.set('view engine', 'ejs');
@@ -22,11 +25,12 @@ app.use(express.static('public'));
 //parse incoming request bodies
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cache('5 minutes'));
 
 
 //rate limiter
 const limiter = rateLimit({
-    windowMS: 1 * 15 * 1000, 
+    windowMs: 1 * 15 * 1000, 
     max: 11,
     message: 'Too many requests, please try again later.'
 });
