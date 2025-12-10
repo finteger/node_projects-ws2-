@@ -8,6 +8,9 @@ const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/users');
 const ejs = require('ejs');
 const rateLimit = require('express-rate-limit');
+const YAML = require('yamljs');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = YAML.load('./swagger.yaml');
 
 //set view engine
 app.set('view engine', 'ejs');
@@ -33,6 +36,8 @@ const limiter = rateLimit({
 app.use(limiter);
 app.use(mainRoutes);
 app.use(userRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 mongoose.
 connect(uri)
