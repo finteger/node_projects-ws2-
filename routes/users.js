@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { readData } = require('../utils/file.js'); 
 const userController = require('../controllers/userController.js');
+const authController = require('../controllers/authController.js');
 
 router.get('/home', (req, res)=>{
     res.render('home');
@@ -19,6 +20,14 @@ router.get('/api/v1/users', async (req, res) => {
 
 //this route handler is attached to form which relays request to controller function
 router.post('/users', userController.createUser);
+
+
+//router generate jwt
+router.post('/generate-token', authController.generateToken);
+
+//router verify
+router.post('/verify-token', authController.verifyToken);
+
 
 
 module.exports = router;
